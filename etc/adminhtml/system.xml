@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="blackbird_extensions" translate="label" sortOrder="300">
+            <label>Blackbird Extensions</label>
+        </tab>
+        <section id="blackbird_vat_checker_proxy_client" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+            <class>separator-top</class>
+            <label>Vat Checker Proxy Client</label>
+            <tab>blackbird_extensions</tab>
+            <resource>Blackbird_VatCheckerProxyClient::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Vat Checker Proxy Client Enabled</label>
+                    <comment>Enable or Disable Proxy Client to Check VAT</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_only_on_failure" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Use Proxy only on failure</label>
+                    <comment>Set it to "No" will make tva checking always going through the proxy server. Set it to "Yes" will make proxy tva checking called on failure of standard tva checking.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="blackbird_vat_checker_proxy_client/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="proxy_url" translate="label comment" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Proxy Url</label>
+                    <comment>Enter the full url path of the proxy server.</comment>
+                    <depends>
+                        <field id="blackbird_vat_checker_proxy_client/general/enable">1</field>
+                    </depends>
+                </field>
+                <field id="token" translate="label comment" type="obscure" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="0">
+                    <label>Security Token</label>
+                    <comment>Enter the security token defined in the config.php file of the proxy server.</comment>
+                    <depends>
+                        <field id="blackbird_vat_checker_proxy_client/general/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

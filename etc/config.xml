@@ -1,0 +1,14 @@
+<!--
+  ~ @copyright Open Software License (OSL 3.0)
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <blackbird_vat_checker_proxy_client>
+            <general>
+                <enable>1</enable>
+                <use_only_on_failure>1</use_only_on_failure>
+            </general>
+        </blackbird_vat_checker_proxy_client>
+    </default>
+</config>

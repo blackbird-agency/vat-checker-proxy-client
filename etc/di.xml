@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+  ~ @copyright Open Software License (OSL 3.0)
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\Model\Vat">
+        <plugin name="aroundCheckVat" type="Blackbird\VatCheckerProxyClient\Model\Vat" sortOrder="1" disabled="false" />
+    </type>
+</config>
