@@ -7,6 +7,7 @@ namespace Blackbird\VatCheckerProxyClient\Model;
 
 use Magento\Framework\DataObject;
 use Psr\Log\LoggerInterface as PsrLogger;
+use Magento\Framework\HTTP\Client\Curl;
 
 class Vat
 {
@@ -20,10 +21,17 @@ class Vat
      */
     protected $config;
 
+    /**
+     * @var Curl
+     */
+    protected $curl;
+
     public function __construct(
         Config $config,
-        PsrLogger $logger
+        PsrLogger $logger,
+        Curl $curl
     ) {
+        $this->curl = $curl;
         $this->config = $config;
         $this->logger = $logger;
     }
@@ -76,26 +84,23 @@ class Vat
             $requestParams['requesterVatNumber'] = $reqVatNumSanitized;
             $requestParams['token'] = $this->config->getToken();
 
-
             $url = $this->config->getProxyUrl();
-            $options = [
-                'http' => [
-                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method'  => 'POST',
-                    'content' => http_build_query($requestParams)
-                ]
-            ];
-            $context  = stream_context_create($options);
-            $result = file_get_contents($url, false, $context);
-            if ($result === false) { /* Handle error */
-                $this->logger->warning('Vat Checker Proxy Error : no result from host');
-                return $previousRes;
+
+            try {
+                $this->curl->post($url, $requestParams);
+                $result= $this->curl->getBody();
+
+                if ($result === false) { /* Handle error */
+                    $this->logger->warning('Vat Checker Proxy Error : no result from host');
+                    return $previousRes;
+                }
+                $resultDecoded = json_decode($result, true);
+            } catch (\Exception $exception) {
+                $this->logger->warning('Vat Checker Proxy Error : ' . $exception->getMessage());
             }
 
-            $resultDecoded = (array) json_decode($result);
-
             if (array_key_exists('error', $resultDecoded)) {
-                $this->logger->debug('Vat Checker Proxy Error : ' . $result['error']);
+                $this->logger->warning('Vat Checker Proxy Error : ' . $result['error']);
                 return $previousRes;
             }
 

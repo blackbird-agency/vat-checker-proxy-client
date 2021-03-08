@@ -36,6 +36,7 @@
                 <field id="token" translate="label comment" type="obscure" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="0">
                     <label>Security Token</label>
                     <comment>Enter the security token defined in the config.php file of the proxy server.</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                     <depends>
                         <field id="blackbird_vat_checker_proxy_client/general/enable">1</field>
                     </depends>
