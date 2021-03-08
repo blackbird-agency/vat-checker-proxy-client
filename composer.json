@@ -1,5 +1,5 @@
 {
-    "name": "blackbird/vat_checker_proxy_client",
+    "name": "blackbird/vat-checker-proxy-client",
     "description": "Magento extension - VatCheckerProxyClient",
     "require": {
 
