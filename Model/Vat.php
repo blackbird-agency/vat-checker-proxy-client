@@ -1,13 +1,24 @@
 <?php
 /*
- * @copyright Open Software License (OSL 3.0)
+ * Blackbird Vat Checker Proxy Client
+ *
+ * NOTICE OF LICENSE
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to contact@bird.eu so we can send you a copy immediately.
+ * @category        Blackbird
+ * @package         Blackbird_VatCheckerProxyClient
+ * @copyright       Copyright (c) Blackbird (https://black.bird.eu)
+ * @author          Blackbird Team
+ * @license         MIT
+ * @support         https://github.com/blackbird-agency/vat-checker-proxy-client/issues/new
  */
 
 namespace Blackbird\VatCheckerProxyClient\Model;
 
 use Magento\Framework\DataObject;
-use Psr\Log\LoggerInterface as PsrLogger;
 use Magento\Framework\HTTP\Client\Curl;
+use Psr\Log\LoggerInterface as PsrLogger;
 
 class Vat
 {

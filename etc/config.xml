@@ -1,5 +1,16 @@
 <!--
-  ~ @copyright Open Software License (OSL 3.0)
+  ~ Blackbird Vat Checker Proxy Client
+  ~
+  ~ NOTICE OF LICENSE
+  ~ If you did not receive a copy of the license and are unable to
+  ~ obtain it through the world-wide-web, please send an email
+  ~ to contact@bird.eu so we can send you a copy immediately.
+  ~ @category        Blackbird
+  ~ @package         Blackbird_VatCheckerProxyClient
+  ~ @copyright       Copyright (c) Blackbird (https://black.bird.eu)
+  ~ @author          Blackbird Team
+  ~ @license         MIT
+  ~ @support         https://github.com/blackbird-agency/vat-checker-proxy-client/issues/new
   -->
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
