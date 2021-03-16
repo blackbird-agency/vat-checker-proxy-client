@@ -98,6 +98,7 @@ class Vat
             $url = $this->config->getProxyUrl();
 
             try {
+                $this->curl->setTimeout(5);
                 $this->curl->post($url, $requestParams);
                 $result= $this->curl->getBody();
 
