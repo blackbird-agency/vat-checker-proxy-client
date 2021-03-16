@@ -108,6 +108,7 @@ class Vat
                 $resultDecoded = json_decode($result, true);
             } catch (\Exception $exception) {
                 $this->logger->warning('Vat Checker Proxy Error : ' . $exception->getMessage());
+                return $previousRes;
             }
 
             if (array_key_exists('error', $resultDecoded)) {
