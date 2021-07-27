@@ -113,7 +113,7 @@ class Vat
             }
 
             if (array_key_exists('error', $resultDecoded)) {
-                $this->logger->warning('Vat Checker Proxy Error : ' . $result['error']);
+                $this->logger->warning('Vat Checker Proxy Error : ' . $resultDecoded['error']);
                 return $previousRes;
             }
 
